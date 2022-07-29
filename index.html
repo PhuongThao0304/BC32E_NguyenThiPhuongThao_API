@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Product management web</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="assets/styles/style.css" />
+  </head>
+  <body>
+      
+    <div class="container">
+        <h1 class="text-center my-2 pb-3">Create Product</h1>
+        <div id="product-info" class="table-responsive">
+            <table class='table table-bordered'>
+                <thead class='thead-dark'>
+                    <tr>
+                        <th scope='col'>Product info</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="">
+                        <td class="form" scope="row">
+                            <div class="form-row">
+                                <div class="form-group col-6">
+                                    <label for="id">ID</label>
+                                    <p class="text-danger" id="error_required_id">error</p>
+                                    <input type="text" class="form-control" id="id" placeholder="product id">
+                                </div>
+                                <div class="form-group col-6">
+                                    <label for="image">Image</label>
+                                    <input type="text" class="form-control" id="image" placeholder="product image link">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-6">
+                                    <label for="name">Name</label>
+                                    <p class="text-danger" id="error_required_name">error</p>
+                                    <input type="text" class="form-control" id="name" placeholder="product name">
+                                </div>
+                                <div class="form-group col-6">
+                                    <label for="image">Product type</label>
+                                    <select id="type" class="form-control">
+                                        <option value="mobile">Mobile</option>
+                                        <option value="laptop">Laptop</option>
+                                        <option value="tablet">Tablet</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-6">
+                                    <label for="price">Price</label>
+                                    <input type="text" class="form-control" id="price" placeholder="product price">
+                                </div>
+                                <div class="form-group col-6">
+                                    <label for="image">Descripton</label>
+                                    <textarea class="form-control" id="description" rows="1"
+                                        placeholder="product description"></textarea>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="">
+                        <td class="table-secondary" scope="row">
+                            <button type="submit" id="btnCreate" class="btn btn-primary">Create</button>
+                            <button type="button" id="btnUpdate" class="btn btn-success ml-2" disabled >Update</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="form-row align-items-center justify-content-center mt-2">
+            <div class="form-group col-lg-6 col">
+                <input type="text" class="form-control" id="searchName" placeholder="Search by name">
+            </div>
+            <div class="form-group col-auto">
+                <button type="button" id="btnSearch" class="btn btn-primary" >Search</button>
+                <button type="button" id="btnClear" class="btn btn-secondary ml-1" >Clear</button>
+            </div>
+        </div>
+        <div id="product-list" class="table-responsive">
+            <table class='table'>
+                <thead class='thead-dark'>
+                    <tr>
+                        <th scope='col'>Id</th>
+                        <th scope='col'>Image</th>
+                        <th scope='col'>Name</th>
+                        <th scope='col'>Price</th>
+                        <th scope='col'>Descripton</th>
+                        <th scope='col'>Type</th>
+                        <th scope='col'></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js" integrity="sha512-xIPqqrfvUAc/Cspuj7Bq0UtHNo/5qkdyngx6Vwt+tmbvTLDszzXM0G6c91LXmGrRx8KEPulT+AfOOez+TeVylg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    
+    <!--models-->
+    <script src="./models/Validation.js"></script>
+    <script src="./models/Product.js"></script>
+    
+
+    <!--controller-->
+    <!-- <script src="./controllers/index.js"></script> -->
+    <script src="./controllers/indexAjax.js"></script>
+
+
+    </body>
+</html>

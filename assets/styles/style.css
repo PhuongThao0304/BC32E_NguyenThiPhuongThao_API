@@ -1,0 +1,22 @@
+.form-group{
+    margin-bottom: 1.125rem;
+}
+td.image img{
+    max-width: 40px;
+}
+td.action{
+    display: flex;
+}
+.text-danger{
+    position: absolute;
+    left: 5px;
+    top: 100%;
+    font-size: .75rem;
+    margin: 0;
+}
+.text-danger:not(.active){
+    display: none;
+}
+.text-danger.active + input{
+    border-color: #dc3545!important;
+}
